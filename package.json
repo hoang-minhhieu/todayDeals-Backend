@@ -4,7 +4,8 @@
   "description": "A website for people to share new deals & promo codes",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "node main.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/hoang-minhhieu/todayDeals-Backend/issues"
   },
-  "homepage": "https://github.com/hoang-minhhieu/todayDeals-Backend#readme"
+  "homepage": "https://github.com/hoang-minhhieu/todayDeals-Backend#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  }
 }
