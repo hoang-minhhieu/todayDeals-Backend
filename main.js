@@ -1,29 +1,22 @@
-const express = require('express')
-var cors = require('cors')
-const app = express()
+const express = require('express');
+const pool = require('./db');
 
-app.use(cors());
+const app = express();
 
-app.use('/app', express.static(__dirname + '/ui/dist'));
+// example route to retrieve all deals from the database
+app.get('/deals', async (req, res) => {
+  try {
+    const conn = await pool.getConnection();
+    const rows = await conn.query('SELECT * FROM deals');
+    conn.release();
+    res.json(rows);
+    console.log(conn);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server error');
+  }
+});
 
-let count="1";
-
-app.get('/count', (req, res) => {
-  res.json({
-    "changed":count
-  });
-})
-
-
-
-const background=function() {
-    console.log('backgroung executed');
-    setTimeout(background, 5000);
-    count++;
-}
-
-background();
-
-app.listen(3000, () => {
-  console.log(`MESS (Mongo Event Sourcing) listening at http://localhost:3000`);
+app.listen(4000, () => {
+  console.log(`MESS (Mongo Event Sourcing) listening at http://localhost:4000`);
 });

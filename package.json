@@ -19,6 +19,7 @@
   "homepage": "https://github.com/hoang-minhhieu/todayDeals-Backend#readme",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "mariadb": "^3.1.0"
   }
 }
